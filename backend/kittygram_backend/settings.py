@@ -1,12 +1,14 @@
 import os
 from pathlib import Path
-import sentry_sdk
-from sentry_sdk.integrations.django import DjangoIntegration
-from dotenv import load_dotenv
 
+import sentry_sdk
+from dotenv import load_dotenv
+from sentry_sdk.integrations.django import DjangoIntegration
+
+load_dotenv()
 
 sentry_sdk.init(
-    dsn="https://f60bdef6d6b64dc5baf1e51800030ee4@o4505320151384064.ingest.sentry.io/4505320162263040",
+    dsn = os.environ.get('DSN'),
     integrations=[
         DjangoIntegration(),
     ],
@@ -14,16 +16,15 @@ sentry_sdk.init(
     traces_sample_rate=1.0,
 
     send_default_pii=True
-)
+    )
 
-load_dotenv()
-SECRET_KEY = os.environ.get("SECRET_KEY")
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '158.160.31.3', 'evgen-eg.myddns.me']
+ALLOWED_HOSTS = os.environ.get('SECRET_KEY').split()
 
 INSTALLED_APPS = [
     'django.contrib.admin',
