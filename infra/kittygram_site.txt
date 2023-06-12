@@ -1,0 +1,5 @@
+IP: 158.160.31.3;
+name_taski: https://evgen-eg.ddnsking.com;
+name_kittygram: https://evgen-eg.myddns.me;
+login: evgen;
+password: 1029; 
